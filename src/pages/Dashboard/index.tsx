@@ -41,9 +41,9 @@ const Dashboard: React.FC = () => {
         (transaction: Transaction) => ({
           ...transaction,
           value: transaction.value * (transaction.type === 'outcome' ? -1 : 1),
-          formattedValue: formatValue(
-            transaction.value * (transaction.type === 'outcome' ? -1 : 1),
-          ),
+          formattedValue:
+            (transaction.type === 'outcome' ? '- ' : '') +
+            formatValue(transaction.value),
           formattedDate: new Date(transaction.created_at).toLocaleString(
             'pt-br',
           ),
